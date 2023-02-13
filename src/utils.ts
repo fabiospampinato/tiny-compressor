@@ -1,28 +1,10 @@
 
 /* IMPORT */
 
+import concat from 'uint8-concat';
 import type {Algorithm, Stream, StreamConstructor} from './types';
 
 /* MAIN */
-
-const concatenate = ( chunks: Uint8Array[] ): Uint8Array => { //TODO: Maybe publish this as a standalone module, it's quite useful
-
-  const length = chunks.reduce ( ( acc, chunk ) => acc + chunk.byteLength, 0 );
-  const buffer = new Uint8Array ( length );
-
-  let offset = 0;
-
-  chunks.forEach ( chunk => {
-
-    buffer.set ( chunk, offset );
-
-    offset += chunk.byteLength;
-
-  });
-
-  return buffer;
-
-};
 
 const streamFrom = ( Stream: StreamConstructor, algorithm: Algorithm, input: ArrayBuffer | Uint8Array ): Stream => {
 
@@ -38,7 +20,7 @@ const streamProcess = async ( Stream: StreamConstructor, input: ArrayBuffer | Ui
 
   const stream = streamFrom ( Stream, algorithm, input );
   const chunks = await streamRead ( stream );
-  const buffer = concatenate ( chunks );
+  const buffer = concat ( chunks );
 
   return buffer;
 
@@ -76,4 +58,4 @@ const streamWrite = ( stream: Stream, input: ArrayBuffer | Uint8Array ): Stream 
 
 /* EXPORT */
 
-export {concatenate, streamFrom, streamProcess, streamRead, streamWrite};
+export {streamFrom, streamProcess, streamRead, streamWrite};
