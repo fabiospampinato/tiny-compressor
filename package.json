@@ -3,7 +3,7 @@
   "repository": "github:fabiospampinato/tiny-compressor",
   "description": "A tiny isomorphic compression library that leverages CompressionStream and DecompressionStream.",
   "license": "MIT",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "main": "dist/index.js",
   "exports": "./dist/index.js",
