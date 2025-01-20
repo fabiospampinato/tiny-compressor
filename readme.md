@@ -7,13 +7,15 @@ This library exists because compressing and decompressing a `Uint8Array` with `C
 ## Install
 
 ```sh
-npm install --save tiny-compressor
+npm install tiny-compressor
 ```
 
 ## Usage
 
 ```ts
 import Compressor from 'tiny-compressor';
+
+// Let's compress and decompress a Uint8Array
 
 const buffer = new Uint8Array ([ 1, 2, 3, 4, 5 ]);
 const compressed = await Compressor.compress ( buffer, 'gzip' );
