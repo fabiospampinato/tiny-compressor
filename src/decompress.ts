@@ -9,7 +9,7 @@ import type {Algorithm, StreamConstructor} from './types';
 
 const decompress = ( input: ArrayBuffer | Uint8Array, algorithm: Algorithm = DEFAULT_ALGORITHM ): Promise<Uint8Array> => {
 
-  const DecompressionStream: StreamConstructor = globalThis['DecompressionStream'];
+  const DecompressionStream: StreamConstructor = globalThis.DecompressionStream;
   const buffer = streamProcess ( DecompressionStream, input, algorithm );
 
   return buffer;
